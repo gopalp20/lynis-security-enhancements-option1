@@ -1,0 +1,53 @@
+=======================================================
+       LYNIS CUSTOM AUDIT TEST
+=======================================================
+Test ID      : CUST-9002
+Audit Name   : ICMP Security Configuration Audit
+Category     : Network Security
+=======================================================
+
+[1] Checking ICMP broadcast protection...
+[PASS] ICMP broadcast protection is 1.
+
+[2] Checking bogus ICMP error protection...
+[PASS] Bogus ICMP error protection is 1.
+
+[3] Checking global ICMP redirect acceptance...
+[WARNING] Global ICMP redirect acceptance is 1; expected 0.
+Recommendation: Set net.ipv4.conf.all.accept_redirects=0 if the host does not require redirects.
+
+[4] Checking default ICMP redirect acceptance...
+[WARNING] Default ICMP redirect acceptance is 1; expected 0.
+Recommendation: Set net.ipv4.conf.default.accept_redirects=0 if the host does not require redirects.
+
+[5] Checking global ICMP redirect sending...
+[WARNING] Global ICMP redirect sending is 1; expected 0.
+Recommendation: Set net.ipv4.conf.all.send_redirects=0 if the host does not act as a router.
+
+[6] Checking default ICMP redirect sending...
+[WARNING] Default ICMP redirect sending is 1; expected 0.
+Recommendation: Set net.ipv4.conf.default.send_redirects=0 if the host does not act as a router.
+
+[7] Checking interface-specific redirect acceptance and sending...
+[WARNING] Interface setting net.ipv4.conf.eth0.accept_redirects is 1; expected 0.
+Recommendation: Disable redirects for this interface if they are not required.
+[WARNING] Interface setting net.ipv4.conf.lo.accept_redirects is 1; expected 0.
+Recommendation: Disable redirects for this interface if they are not required.
+[WARNING] Interface setting net.ipv4.conf.eth0.send_redirects is 1; expected 0.
+Recommendation: Disable redirects for this interface if they are not required.
+[WARNING] Interface setting net.ipv4.conf.lo.send_redirects is 1; expected 0.
+Recommendation: Disable redirects for this interface if they are not required.
+
+[8] Checking reverse-path filtering...
+[WARNING] net.ipv4.conf.all.rp_filter is 0; reverse-path filtering is not enabled for this setting.
+Recommendation: Consider rp_filter=1 for strict filtering or rp_filter=2 for loose filtering, depending on routing requirements.
+[PASS] net.ipv4.conf.default.rp_filter is 2.
+
+=======================================================
+                 AUDIT SUMMARY
+=======================================================
+Total Checks : 12
+Passed       : 3
+Warnings     : 9
+Overall Status : WARNING
+=======================================================
